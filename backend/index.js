@@ -4,6 +4,7 @@ require("dotenv").config();
 const cors = require("cors");
 const connection = require("./config/db");
 const authRoute = require("./routes/authRoute")
+const adminRoute = require("./routes/adminRoute");
 
 app.use(cors({
     origin: "*", // Allows all origins
@@ -16,10 +17,9 @@ app.use(cors({
 app.use(express.json());
 
 
-
 // 4. Routes
 app.use("/api/auth", authRoute)
-
+app.use("/api/admin", adminRoute);
 
 
 
