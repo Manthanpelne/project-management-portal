@@ -13,12 +13,12 @@ const AdminProjects = () => {
     // Fetch both clients (for the dropdown) and current projects
     const fetchData = async () => {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const usersRes = await axios.get('http://localhost:5000/api/admin/users', config);
+      const usersRes = await axios.get('https://project-management-portal-cn7a.onrender.com/api/admin/users', config);
       // Filter only users with the 'client' role
       setClients(usersRes.data.filter(u => u.role === 'client'));
       
       // Note: You'll need a GET /api/admin/projects route to see all projects
-      const projRes = await axios.get('http://localhost:5000/api/admin/all-projects', config);
+      const projRes = await axios.get('https://project-management-portal-cn7a.onrender.com/api/admin/all-projects', config);
       setProjects(projRes.data);
     };
     fetchData();
@@ -28,7 +28,7 @@ const AdminProjects = () => {
     e.preventDefault();
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const res = await axios.post('http://localhost:5000/api/admin/projects', formData, config);
+      const res = await axios.post('https://project-management-portal-cn7a.onrender.com/api/admin/projects', formData, config);
       setProjects([...projects, res.data]);
       setFormData({ title: '', description: '', clientId: '' });
       alert("Project Assigned!");

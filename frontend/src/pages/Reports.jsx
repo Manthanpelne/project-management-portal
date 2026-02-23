@@ -12,7 +12,7 @@ const Reports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/get-reports', {
+        const res = await axios.get('https://project-management-portal-cn7a.onrender.com/api/admin/get-reports', {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setReportData(res.data);

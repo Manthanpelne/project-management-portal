@@ -19,7 +19,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', formData);
+      await axios.post('https://project-management-portal-cn7a.onrender.com/api/auth/register', formData);
       navigate('/login'); // Redirect to login after successful signup
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');

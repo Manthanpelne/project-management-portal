@@ -9,7 +9,7 @@ const ClientStats = () => {
   useEffect(() => {
     const fetchMyProjects = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/client/projects', {
+        const res = await axios.get('https://project-management-portal-cn7a.onrender.com/api/client/projects', {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setProjects(res.data);
@@ -22,7 +22,7 @@ const ClientStats = () => {
 
   const updateStatus = async (projectId, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/client/project/${projectId}`, 
+      await axios.put(`https://project-management-portal-cn7a.onrender.com/api/client/project/${projectId}`, 
         { status: newStatus },
         { headers: { Authorization: `Bearer ${user.token}` }}
       );

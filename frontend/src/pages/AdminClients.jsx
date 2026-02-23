@@ -14,7 +14,7 @@ const AdminClients = () => {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/clients', {
+      const res = await axios.get('https://project-management-portal-cn7a.onrender.com/api/admin/clients', {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setClients(res.data);
@@ -26,7 +26,7 @@ const AdminClients = () => {
   const deleteClient = async (id) => {
     if (window.confirm("Are you sure? This will remove the client's access.")) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/user/${id}`, {
+        await axios.delete(`https://project-management-portal-cn7a.onrender.com/api/admin/user/${id}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setClients(clients.filter(c => c._id !== id));

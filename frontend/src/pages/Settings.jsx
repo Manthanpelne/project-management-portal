@@ -17,7 +17,7 @@ const Settings = () => {
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put('http://localhost:5000/api/users/profile', 
+      const res = await axios.put('https://project-management-portal-cn7a.onrender.com/api/users/profile', 
         { name: profile.name, email: profile.email, profileImage: profile.profileImage },
         { headers: { Authorization: `Bearer ${user.token}` }}
       );
@@ -35,7 +35,7 @@ const Settings = () => {
     if (passwords.new !== passwords.confirm) return alert("New passwords do not match!");
 
     try {
-      await axios.put('http://localhost:5000/api/users/profile', 
+      await axios.put('https://project-management-portal-cn7a.onrender.com/api/users/profile', 
         { password: passwords.new },
         { headers: { Authorization: `Bearer ${user.token}` }}
       );

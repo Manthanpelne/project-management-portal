@@ -18,7 +18,7 @@ const AdminUsers = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/admin/user/${selectedUser._id}`, selectedUser, {
+      await axios.put(`https://project-management-portal-cn7a.onrender.com/api/admin/user/${selectedUser._id}`, selectedUser, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setIsModalOpen(false);
@@ -31,7 +31,7 @@ const AdminUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/users', {
+        const res = await axios.get('https://project-management-portal-cn7a.onrender.com/api/admin/users', {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setUsers(res.data);
@@ -44,7 +44,7 @@ const AdminUsers = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure?")) {
-      await axios.delete(`http://localhost:5000/api/admin/user/${id}`, {
+      await axios.delete(`https://project-management-portal-cn7a.onrender.com/api/admin/user/${id}`, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setUsers(users.filter(u => u._id !== id));

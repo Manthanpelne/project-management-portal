@@ -2,6 +2,8 @@
 
 A robust, full-stack project management platform featuring role-based access control (RBAC) for Admins, Clients, and Users.
 
+# Netlify link : https://ubiquitous-heliotrope-8a75b1.netlify.app/
+# Deployed Link : https://project-management-portal-cn7a.onrender.com
 
 
 ## 📋 Table of Contents
@@ -44,7 +46,17 @@ A robust, full-stack project management platform featuring role-based access con
 - Node.js installed
 - MongoDB Atlas account or local MongoDB instance
 
+### 2. env inputs
+MONGOURL = ******
+JWT_SECRET = ******
+PORT = ****
+
 ### 2. Backend Installation
 ```bash
 cd backend
+npm install
+
+### 2. Frontend Installation
+```bash
+cd frontend
 npm install
