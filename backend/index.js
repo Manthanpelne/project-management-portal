@@ -5,6 +5,8 @@ const cors = require("cors");
 const connection = require("./config/db");
 const authRoute = require("./routes/authRoute")
 const adminRoute = require("./routes/adminRoute");
+const clientRoute = require("./routes/clientRoute");
+const userRoute = require("./routes/userRoute");
 
 app.use(cors({
     origin: "*", // Allows all origins
@@ -20,6 +22,8 @@ app.use(express.json());
 // 4. Routes
 app.use("/api/auth", authRoute)
 app.use("/api/admin", adminRoute);
+app.use("/api/client", clientRoute);
+app.use("/api/users", userRoute);
 
 
 

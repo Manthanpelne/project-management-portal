@@ -2,19 +2,25 @@ const jwt = require('jsonwebtoken');
 
 // Verify Token
 const protect = (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ message: 'Not authorized' });
+  let token;
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    try {
+      token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded; 
+      next();
+    } catch (error) {
+      console.error("JWT Verification Error:", error.message);
+      return res.status(401).json({ message: 'Not authorized, token failed' });
+    }
+  }
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach user data (id and role) to request
-    next();
-  } catch (error) {
-    res.status(401).json({ message: 'Token failed' });
+  if (!token) {
+    return res.status(401).json({ message: 'Not authorized, no token' });
   }
 };
 
-// Check Role
+
 const authorize = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
